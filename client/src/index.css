@@ -1,0 +1,19 @@
+/* --- Global Reset to remove Vite's default borders --- */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden; /* Prevents accidental left/right scrolling */
+}
+
+/* This targets the master container holding your React app */
+#root {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
