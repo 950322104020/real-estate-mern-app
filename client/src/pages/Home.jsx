@@ -26,7 +26,7 @@ function Home() {
 
   const fetchProperties = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/properties', {
+      const response = await axios.get('https://ebenezer-backend-vw14.onrender.com/api/properties', {
         params: { searchTerm, purpose: activeFilter, minPrice, maxPrice, bedrooms: filterBedrooms }
       });
       setProperties(response.data);
@@ -40,7 +40,7 @@ function Home() {
     if (!isLoggedIn) return; // Only fetch if they are logged in!
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:5000/api/users/me', {
+      const response = await axios.get('https://ebenezer-backend-vw14.onrender.com/api/users/me', {
         headers: { Authorization: `Bearer ${token}` } // Show the VIP wristband
       });
       setFavorites(response.data.favorites);
@@ -67,7 +67,7 @@ function Home() {
     }
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.post(`http://localhost:5000/api/users/favorite/${propertyId}`, {}, {
+      const response = await axios.post(`https://ebenezer-backend-vw14.onrender.com/api/users/favorite/${propertyId}`, {}, {
         headers: { Authorization: `Bearer ${token}` } // Show the VIP wristband
       });
       // Instantly update the React state so the heart turns red!
@@ -104,10 +104,10 @@ function Home() {
       const config = { headers: { 'Content-Type': 'multipart/form-data' } };
 
       if (editingId) {
-        await axios.put(`http://localhost:5000/api/properties/${editingId}`, submitData, config);
+        await axios.put(`https://ebenezer-backend-vw14.onrender.com/api/properties/${editingId}`, submitData, config);
         setEditingId(null); 
       } else {
-        await axios.post('http://localhost:5000/api/properties', submitData, config);
+        await axios.post('https://ebenezer-backend-vw14.onrender.com/api/properties', submitData, config);
       }
       
       setFormData({ title: '', description: '', price: '', address: '', bedrooms: '', bathrooms: '', purpose: 'For Sale' });
@@ -120,7 +120,7 @@ function Home() {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/properties/${id}`);
+      await axios.delete(`https://ebenezer-backend-vw14.onrender.com/api/properties/${id}`);
       fetchProperties();
     } catch (error) {
       console.error("Error deleting property:", error);
