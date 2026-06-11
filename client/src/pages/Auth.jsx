@@ -22,7 +22,7 @@ function Auth() {
     try {
       if (isLogin) {
         // --- LOGIN MODE ---
-        const response = await axios.post('http://localhost:5000/api/auth/login', {
+        const response = await axios.post('https://ebenezer-backend-vw14.onrender.com/api/auth/login', {
           email: formData.email,
           password: formData.password
         });
@@ -35,7 +35,7 @@ function Auth() {
         navigate('/'); 
       } else {
         // --- REGISTER MODE ---
-        await axios.post('http://localhost:5000/api/auth/register', formData);
+        await axios.post('https://ebenezer-backend-vw14.onrender.com/api/auth/register', formData);
         alert("Registration successful! You can now log in.");
         setIsLogin(true); // Switch the form back to login mode automatically
       }
