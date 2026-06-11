@@ -14,7 +14,7 @@ function PropertyDetails() {
   useEffect(() => {
     const fetchSingleProperty = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/properties/${id}`);
+        const response = await axios.get(`https://ebenezer-backend-vw14.onrender.com/api/properties/${id}`);
         setProperty(response.data);
       } catch (error) {
         console.error("Error fetching the property:", error);
@@ -32,7 +32,7 @@ function PropertyDetails() {
     
     setEmailStatus('⏳ Sending...');
     try {
-        await axios.post('http://localhost:5000/api/contact', {
+        await axios.post('https://ebenezer-backend-vw14.onrender.com/api/contact', {
             name: contactData.name,
             phone: contactData.phone,
             propertyTitle: property.title,
